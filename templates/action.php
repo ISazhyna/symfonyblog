@@ -3,13 +3,11 @@
 <html>
 <body>
 <?php
-var_dump($_POST);
-
+var_dump($_POST['title']);
+Model::add_new_post();
 ?>
 
-Welcome <?php echo $_POST["name"]; ?><br>
-Your email address is: <?php echo $_POST["email"]; ?><br>
-Age: <?php echo $_POST["age"]; ?>
+New post <?php echo $_POST["title"]; ?> was successfully added <br>
 
 </body>
 </html>
