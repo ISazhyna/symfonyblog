@@ -44,7 +44,7 @@ public static function get_post_by_id($id)
     public static function add_new_post(){
         $link = self::open_database_connection(); //create new PDO
         $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('".$_POST['title']."', '".$_POST['body']."', '".$_POST['created_at']."')");
-        return $result;
+        return $result;   //вот Этот ретурн ведь здесь не нужен???
     }
 
 }
