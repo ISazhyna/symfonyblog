@@ -19,5 +19,8 @@
 <div><a href="/less3">
         <?= Less ?>
     </a></div>
+<div><a href="/form">
+        <?= Form ?>
+    </a></div>
 <?php $content = ob_get_clean() ?>
 <?php include 'layout.php' ?>

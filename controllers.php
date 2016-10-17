@@ -34,8 +34,17 @@ public static function less_action()
         $html =  self::render_template('templates/list.php', array('posts' => $posts));
         return new Response($html);
     }
+public static function form_action()
+{
+    $html =  self::render_template('templates/form.php', array());
+    return new Response($html);
+}
 
-
+    public static function action_action()
+    {
+        $html =  self::render_template('templates/action.php', array());
+        return new Response($html);
+    }
 // helper function to render templates
 public static function render_template($path, array $args)
     {

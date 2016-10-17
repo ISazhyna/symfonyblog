@@ -18,7 +18,15 @@ public static function routing($uri,$request) {
     } elseif ('/less3' === $uri) {
         $response = Controller::less_action();
         return $response;
-    } else {
+    } elseif ('/form' === $uri) {
+        $response = Controller::form_action();
+        return $response;
+    }
+    elseif ('/fdhdfhn' === $uri) {
+        $response = Controller::action_action();
+        return $response;
+    }
+    else {
         $html = '<html><body><h1>Page Not Found</h1></body></html>';
         $response = new Response($html, Response::HTTP_NOT_FOUND);
         return $response;
