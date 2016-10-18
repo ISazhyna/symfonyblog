@@ -1,4 +1,5 @@
 <?php
+
 // model.php
 class Model
 {
@@ -28,7 +29,7 @@ class Model
     }
 
 
-public static function get_post_by_id($id)
+    public static function get_post_by_id($id)
     {
         $link = self::open_database_connection();
         $query = 'SELECT created_at, title, body FROM post WHERE id=:id';
@@ -37,13 +38,24 @@ public static function get_post_by_id($id)
         $statement->execute();
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         self::close_database_connection($link);
+        var_dump($_GET["id"]);
         return $row;
-        var_dump($row);
+
     }
 
-    public static function add_new_post(){
+    public static function add_new_post()
+    {
         $link = self::open_database_connection(); //create new PDO
-        $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('".$_POST['title']."', '".$_POST['body']."', '".$_POST['created_at']."')");
+        $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('" . $_POST['title'] . "', '" . $_POST['body'] . "', '" . $_POST['created_at'] . "')");
+        self::close_database_connection($link);
+        return $result;
+    }
+
+    public static function delete_post()
+    {
+        $link = self::open_database_connection(); //create new PDO
+        $result = $link->query("DELETE FROM post WHERE id=" . $_GET['id']);
+        self::close_database_connection($link);
         return $result;
     }
 
