@@ -9,7 +9,7 @@ $uri = $request->getPathInfo();
 
 // echo the headers and send the response
 //myrouting($uri);
-MyRouting::routing($uri,$request)->send();
+MyRouting::routing($uri, $request)->send();
 //$response->send();
 //var_dump(MyRouting::routing($uri));
 //exit();
