@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7e65397-ed16-4462-b65e-540122a03ab9" name="Default" comment="with delete action">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/delete.php" />
+    <list default="true" id="c7e65397-ed16-4462-b65e-540122a03ab9" name="Default" comment="Merge branch 'forms' of https://github.com/ISazhyna/symfonyblog into forms&#10;&#10;# Conflicts:&#10;#&#9;model.php&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model.php" afterPath="$PROJECT_DIR$/model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myrouting.php" afterPath="$PROJECT_DIR$/myrouting.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/action.php" afterPath="$PROJECT_DIR$/templates/action.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/form.php" afterPath="$PROJECT_DIR$/templates/form.php" />
     </list>
     <ignored path="symfonyblogFromGit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,16 +44,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="58" column="23" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+            <state relative-caret-position="544">
+              <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
               <folding>
-                <marker date="1476723769869" expanded="true" signature="446:472" ph="SELECT id, t... post" />
-                <marker date="1476723769869" expanded="true" signature="807:860" ph="SELECT creat... post" />
-                <marker date="1476723769869" expanded="true" signature="1305:1440" ph="INSERT INTO Post... " />
-                <marker date="1476723769869" expanded="true" signature="1669:1695" ph="DELETE FROM " />
+                <marker date="1476789121528" expanded="true" signature="446:472" ph="SELECT id, t... post" />
+                <marker date="1476789121528" expanded="true" signature="807:860" ph="SELECT creat... post" />
+                <marker date="1476789121528" expanded="true" signature="1305:1428" ph="INSERT INTO Post... " />
+                <marker date="1476789121528" expanded="true" signature="1656:1682" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -73,7 +69,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="delete.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="delete.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/delete.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -88,7 +84,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
               <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1476724981948" expanded="true" signature="119:136" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,7 +145,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="y" value="2" />
-    <option name="width" value="1120" />
+    <option name="width" value="1224" />
     <option name="height" value="1045" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -276,7 +274,7 @@
       <updated>1476701633371</updated>
       <workItem from="1476701634724" duration="406000" />
       <workItem from="1476702100376" duration="14062000" />
-      <workItem from="1476786700211" duration="202000" />
+      <workItem from="1476786700211" duration="2435000" />
     </task>
     <task id="LOCAL-00001" summary="with form">
       <created>1476708135184</created>
@@ -292,21 +290,35 @@
       <option name="project" value="LOCAL" />
       <updated>1476786736769</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="with delete action">
+      <created>1476786908790</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1476786908790</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge branch 'forms' of https://github.com/ISazhyna/symfonyblog into forms&#10;&#10;# Conflicts:&#10;#&#9;model.php&#10;">
+      <created>1476788998613</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1476788998613</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14670000" />
+    <option name="totallyTimeSpent" value="16903000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="2" width="1120" height="1045" extended-state="0" />
+    <frame x="-9" y="2" width="1224" height="1045" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14492753" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13245033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -336,7 +348,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="with form" />
     <MESSAGE value="with delete action" />
-    <option name="LAST_COMMIT_MESSAGE" value="with delete action" />
+    <MESSAGE value="Merge branch 'forms' of https://github.com/ISazhyna/symfonyblog into forms&#10;&#10;# Conflicts:&#10;#&#9;model.php&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'forms' of https://github.com/ISazhyna/symfonyblog into forms&#10;&#10;# Conflicts:&#10;#&#9;model.php&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -364,10 +377,10 @@
         <state relative-caret-position="748">
           <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding>
-            <marker date="1476723769869" expanded="true" signature="446:472" ph="SELECT id, t... post" />
-            <marker date="1476723769869" expanded="true" signature="807:860" ph="SELECT creat... post" />
-            <marker date="1476723769869" expanded="true" signature="1305:1440" ph="INSERT INTO Post... " />
-            <marker date="1476723769869" expanded="true" signature="1669:1695" ph="DELETE FROM " />
+            <marker date="1476789121528" expanded="true" signature="446:472" ph="SELECT id, t... post" />
+            <marker date="1476789121528" expanded="true" signature="807:860" ph="SELECT creat... post" />
+            <marker date="1476789121528" expanded="true" signature="1305:1428" ph="INSERT INTO Post... " />
+            <marker date="1476789121528" expanded="true" signature="1656:1682" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
@@ -392,7 +405,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1476724981948" expanded="true" signature="119:136" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -440,7 +455,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1476724981948" expanded="true" signature="119:136" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -461,19 +478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="58" column="23" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
-          <folding>
-            <marker date="1476723769869" expanded="true" signature="446:472" ph="SELECT id, t... post" />
-            <marker date="1476723769869" expanded="true" signature="807:860" ph="SELECT creat... post" />
-            <marker date="1476723769869" expanded="true" signature="1305:1440" ph="INSERT INTO Post... " />
-            <marker date="1476723769869" expanded="true" signature="1669:1695" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="779">
@@ -487,6 +491,19 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+          <folding>
+            <marker date="1476789121528" expanded="true" signature="446:472" ph="SELECT id, t... post" />
+            <marker date="1476789121528" expanded="true" signature="807:860" ph="SELECT creat... post" />
+            <marker date="1476789121528" expanded="true" signature="1305:1428" ph="INSERT INTO Post... " />
+            <marker date="1476789121528" expanded="true" signature="1656:1682" ph="DELETE FROM " />
+          </folding>
         </state>
       </provider>
     </entry>

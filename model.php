@@ -47,9 +47,7 @@ class Model
     {
         $link = self::open_database_connection(); //create new PDO
         $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('".$_POST['title']."', '".$_POST['body']."', '".$_POST['created_at']."')");
-        return $result;   //вот Этот ретурн ведь здесь не нужен???
-        $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('" . $_POST['title'] . "', '" . $_POST['body'] . "', '" . $_POST['created_at'] . "')");
-        self::close_database_connection($link);
+       self::close_database_connection($link);
         return $result;
     }
 
