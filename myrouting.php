@@ -24,20 +24,20 @@ class MyRouting
             $response = Controller::moreAction();
             return $response;
         } elseif ('/less3' === $uri) {
-            $response = Controller::less_action();
+            $response = Controller::lessAction();
             return $response;
         } elseif ('/form' === $uri) {
             $response = Controller::createPostAction();
             return $response;
-        } elseif ('/fdhdfhn' === $uri) {
+        } elseif ('/save-new-post' === $uri) {
             $response = Controller::savePostAction();
             return $response;
         } elseif ('/delete' === $uri) {
-            $response = Controller::delete_action();
+            $response = Controller::deleteAction();
             return $response;
         }
         elseif ('/edit' === $uri && $request->query->has('id')) {
-            $response = Controller::edit_action($request->query->get('id'));
+            $response = Controller::editAction($request->query->get('id'));
             return $response;
         }
         elseif ('/edited' === $uri ) {

@@ -7,23 +7,23 @@ class Controller
     /**
      * @return Response
      */
-    public static function listAction()
+    public static function listAction($afterDelete = false)
     {
         $sql = '';
-        $posts = Model::get_all_posts($sql);
-//    var_dump($posts);
-        $html = self::render_template('templates/list.php', array('posts' => $posts));
+        $posts = Model::getAllPosts($sql);
+        $html = self::renderTemplate('templates/list.php', array('posts' => $posts, 'showDeleteMessage'=>$afterDelete));
         return new Response($html);
     }
 
     /**
+     * $afterUpdate it's flag
      * @param int $id
      * @return Response
      */
     public static function showAction($id, $afterUpdate = false)
     {
-        $post = Model::get_post_by_id($id);
-        $html = self::render_template('templates/show.php', array('post' => $post, 'showUpdateMessage' => $afterUpdate));
+        $post = Model::getPostById($id);
+        $html = self::renderTemplate('templates/show.php', array('post' => $post, 'showUpdateMessage' => $afterUpdate));
         return new Response($html);
 
     }
@@ -34,8 +34,8 @@ class Controller
     public static function moreAction()
     {
         $sql = ' Where id>3';
-        $posts = Model::get_all_posts($sql);
-        $html = self::render_template('templates/list.php', array('posts' => $posts));
+        $posts = Model::getAllPosts($sql);
+        $html = self::renderTemplate('templates/list.php', array('posts' => $posts));
         return new Response($html);
     }
 
@@ -44,30 +44,31 @@ class Controller
      *
      * @return Response
      */
-    public static function less_action()
+    public static function lessAction()
     {
         $sql = ' Where id<=3';
-        $posts = Model::get_all_posts($sql);
-        $html = self::render_template('templates/list.php', array('posts' => $posts));
+        $posts = Model::getAllPosts($sql);
+        $html = self::renderTemplate('templates/list.php', array('posts' => $posts));
         return new Response($html);
     }
 
     public static function createPostAction()
     {
-        $html = self::render_template('templates/form.php', array());
+        $html = self::renderTemplate('templates/form.php', array());
         return new Response($html);
     }
 
     public static function savePostAction()
     {
-        Model::add_new_post();
-        $html = self::render_template('templates/action.php', array());
+        Model::addNewPost();
+        $html = self::renderTemplate('templates/action.php', array());
         return new Response($html);
     }
 
-    public static function delete_action()
+    public static function deleteAction()
     {
-        $html = self::render_template('templates/delete.php', array());
+        Model::deletePost();
+        $html = self::listAction(true);
         return new Response($html);
     }
 
@@ -75,34 +76,31 @@ class Controller
      * @param $id
      * @return Response
      */
-    public static function edit_action($id)
+    public static function editAction($id)
     {
-        $post = Model::get_post_by_id($id);
-        $html = self::render_template('templates/edit.php', array('post' => $post));
+        $post = Model::getPostById($id);
+        $html = self::renderTemplate('templates/edit.php', array('post' => $post));
         return new Response($html);
     }
 
     public static function updatePostAction()
     {
         $postParams = $_POST;
-        Model::edit_old_post($postParams);
-//        $html = self::render_template('templates/edited.php', array());
-//        return new Response($html);
+        Model::editOldPost($postParams);
         return self::showAction($postParams['getparam'], true);
     }
 
     public static function addSomeStringToTextAction()
     {
         $postParams = Request;
-
         $postParams['body'] = 'Constant string';
-        Model::edit_old_post($postParams);
-        $html = self::render_template('templates/edited.php', array());
+        Model::editOldPost($postParams);
+        $html = self::renderTemplate('templates/edited.php', array());
         return new Response($html);
     }
 
 // helper function to render templates
-    public static function render_template($path, array $args)
+    public static function renderTemplate($path, array $args)
     {
         extract($args); //возвращает массив $posts или $post в зависимости от экшна
         ob_start();
