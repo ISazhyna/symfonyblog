@@ -1,9 +1,12 @@
 <!-- templates/show.php -->
 <?php $title = $post['title'] ?>
 <?php ob_start() ?>
-<h1><?= $post['title'] ?></h1>
-<div class="date"><?= $post['created_at'] ?></div>
-<div class="body"><?= $post['body'] ?></div>
+<?php if ($showUpdateMessage) : ?>
+    <div class="alert alert-success"> Old post <?php echo $post['title']; ?> was successfully updated </div><br>
+<?php endif;?>
+<h1 class="text-center"><?= $post['title'] ?></h1>
+<div class="text-uppercase"><?= $post['created_at'] ?></div>
+<div class="text-uppercase"><?= $post['body'] ?></div>
 <?php $content = ob_get_clean() ?>
 <?php include 'layout.php' ?>
 

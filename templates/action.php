@@ -2,12 +2,7 @@
 <?php ob_start() ?>
     <html>
     <body>
-    <?php
-    var_dump($_POST['title']);
-    Model::add_new_post();
-    ?>
-
-    New post <?php echo $_POST["title"]; ?> was successfully added <br>
+    <div class="alert alert-success"> New post <?php echo $_POST["title"]; ?> was successfully added </div><br>
 
     </body>
     </html>

@@ -38,7 +38,6 @@ class Model
         $statement->execute();
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         self::close_database_connection($link);
-        var_dump($_GET["id"]);
         return $row;
 
     }
@@ -58,5 +57,13 @@ class Model
         self::close_database_connection($link);
         return $result;
     }
-
+    public static function edit_old_post(array $postParams)
+    {
+        $link = self::open_database_connection(); //create new PDO
+//        var_dump("UPDATE Post SET Title='".$postParams['title']."', body='".$postParams['body']."' WHERE id=".$postParams['getparam']);
+//        exit;
+        $result = $link->query("UPDATE Post SET Title='".$postParams['title']."', body='".$postParams['body']."' WHERE id=".$postParams['getparam']);
+        self::close_database_connection($link);
+        return $result;
+    }
 }

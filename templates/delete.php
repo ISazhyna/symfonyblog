@@ -4,7 +4,7 @@
     <html>
     <body>
 
-   <p>Post was successfully deleted. </p><br>
+    <div class="alert alert-success">Post was successfully deleted. </div><br>
 
     </body>
     </html>
