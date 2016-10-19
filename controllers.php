@@ -68,8 +68,7 @@ class Controller
     public static function deleteAction()
     {
         Model::deletePost();
-        $html = self::listAction(true);
-        return new Response($html);
+        return self::listAction(true);
     }
 
     /**

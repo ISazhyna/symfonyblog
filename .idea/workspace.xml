@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7e65397-ed16-4462-b65e-540122a03ab9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/delete.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/edited.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers.php" afterPath="$PROJECT_DIR$/controllers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model.php" afterPath="$PROJECT_DIR$/model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myrouting.php" afterPath="$PROJECT_DIR$/myrouting.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/action.php" afterPath="$PROJECT_DIR$/templates/action.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/edit.php" afterPath="$PROJECT_DIR$/templates/edit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/form.php" afterPath="$PROJECT_DIR$/templates/form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/list.php" afterPath="$PROJECT_DIR$/templates/list.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/show.php" afterPath="$PROJECT_DIR$/templates/show.php" />
     </list>
     <ignored path="symfonyblogFromGit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,8 +69,8 @@
       <file leaf-file-name="controllers.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="74" column="7" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
+            <state relative-caret-position="266">
+              <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
               <folding>
                 <element signature="e#6#52#0#PHP" expanded="true" />
               </folding>
@@ -132,7 +123,6 @@
         <option value="$PROJECT_DIR$/templates/edit_complete.php" />
         <option value="$PROJECT_DIR$/templates/edited.php" />
         <option value="$PROJECT_DIR$/templates/delete.php" />
-        <option value="$PROJECT_DIR$/controllers.php" />
         <option value="$PROJECT_DIR$/templates/edit.php" />
         <option value="$PROJECT_DIR$/myrouting.php" />
         <option value="$PROJECT_DIR$/templates/form.php" />
@@ -140,6 +130,7 @@
         <option value="$PROJECT_DIR$/templates/list.php" />
         <option value="$PROJECT_DIR$/templates/show.php" />
         <option value="$PROJECT_DIR$/templates/action.php" />
+        <option value="$PROJECT_DIR$/controllers.php" />
       </list>
     </option>
   </component>
@@ -292,7 +283,7 @@
       <workItem from="1476701634724" duration="406000" />
       <workItem from="1476702100376" duration="14062000" />
       <workItem from="1476786700211" duration="24932000" />
-      <workItem from="1476864141974" duration="8593000" />
+      <workItem from="1476864141974" duration="8808000" />
     </task>
     <task id="LOCAL-00001" summary="with form">
       <created>1476708135184</created>
@@ -336,11 +327,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476864713826</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="HTTP/1.0 200 OK Cache-Control: no-cache">
+      <created>1476883560388</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1476883560388</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47993000" />
+    <option name="totallyTimeSpent" value="48208000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="832" y="0" width="1094" height="1056" extended-state="0" />
@@ -382,7 +380,8 @@
     <MESSAGE value="with delete action" />
     <MESSAGE value="Merge branch 'forms' of https://github.com/ISazhyna/symfonyblog into forms&#10;&#10;# Conflicts:&#10;#&#9;model.php&#10;" />
     <MESSAGE value="with tarik edition" />
-    <option name="LAST_COMMIT_MESSAGE" value="with tarik edition" />
+    <MESSAGE value="HTTP/1.0 200 OK Cache-Control: no-cache" />
+    <option name="LAST_COMMIT_MESSAGE" value="HTTP/1.0 200 OK Cache-Control: no-cache" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -663,8 +662,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="74" column="7" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
+        <state relative-caret-position="266">
+          <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
           <folding>
             <element signature="e#6#52#0#PHP" expanded="true" />
           </folding>
