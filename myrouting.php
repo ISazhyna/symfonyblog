@@ -1,6 +1,7 @@
 <?php
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Controllers\User\Controllers\Controllers as UsController;
 
 class MyRouting
 {
@@ -19,10 +20,10 @@ class MyRouting
             return $response;
         } //new more and less
         elseif ('/post/more3' === $uri) {
-            $response = Controller::moreAction();
+            $response = Controller::more3Action();
             return $response;
         } elseif ('/post/less3' === $uri) {
-            $response = Controller::lessAction();
+            $response = Controller::less3Action();
             return $response;
         } elseif ('/post/form' === $uri) {
             $response = Controller::createPostAction();
@@ -42,6 +43,13 @@ class MyRouting
             $response = Controller::updatePostAction();
             return $response;
         }
+
+        elseif ('/user/' === $uri ) {
+            $response = UsController::listUserAction();
+            return $response;
+        }
+
+
         else {
             $html = '<html><body><h1>Page Not Found</h1></body></html>';
             $response = new Response($html, Response::HTTP_NOT_FOUND);

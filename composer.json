@@ -4,6 +4,6 @@
     "twbs/bootstrap": "^3.3"
   },
   "autoload": {
-    "files": ["model.php","controllers.php", "myrouting.php"]
+    "files": ["/models/post/model.php", "/controllers/post/controllers.php", "/models/user/model.php", "/controllers/user/controllers.php",  "myrouting.php"]
   }
 }

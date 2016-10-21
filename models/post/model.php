@@ -1,13 +1,12 @@
 <?php
 
-// model.php
 class Model
 {
     public static function openDatabaseConnection()
     {
         $config = simplexml_load_file('config.xml');
         $link = new PDO("mysql:host=$config->Host; dbname=$config->DBname", "$config->UserName");
-        var_dump($config->Host);
+        var_dump($link);
 //        exit();
         return $link;
     }
@@ -34,6 +33,7 @@ class Model
 
     public static function getPostById($id)
     {
+
         $link = self::openDatabaseConnection();
         $query = 'SELECT created_at, title, body FROM post WHERE id=:id';
         $statement = $link->prepare($query);
@@ -63,9 +63,9 @@ class Model
 
     public static function editOldPost(array $postParams)
     {
-        $link = self::openDatabaseConnection(); //create new PDO
+       $link = self::openDatabaseConnection(); //create new PDO
         $result = $link->query("UPDATE Post SET Title='" . $postParams['title'] . "', body='" . $postParams['body'] . "' WHERE id=" . $postParams['getparam']);
-        self::closeDatabaseConnection($link);
+//        self::closeDatabaseConnection($link);
         return $result;
     }
 }
