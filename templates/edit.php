@@ -1,6 +1,5 @@
 <?php $title = 'Edit post'; ?>
 <?php ob_start() ?>
-<?php //var_dump($_GET["id"]); ?>
 <div class="container">
     <form class="form-horizontal" action="edited" method="post">
         <div class="form-group">

@@ -11,36 +11,34 @@ class MyRouting
      */
     public static function routing($uri, Request $request)
     {
-        if ('/' === $uri) {
+        if ('/post/' === $uri or '/' === $uri) {
             $response = Controller::listAction();
             return $response;
-            var_dump($uri);
-        } elseif ('/show' === $uri && $request->query->has('id')) {
+        } elseif ('/post/show' === $uri && $request->query->has('id')) {
             $response = Controller::showAction($request->query->get('id'));
             return $response;
-            var_dump($uri);
         } //new more and less
-        elseif ('/more3' === $uri) {
+        elseif ('/post/more3' === $uri) {
             $response = Controller::moreAction();
             return $response;
-        } elseif ('/less3' === $uri) {
+        } elseif ('/post/less3' === $uri) {
             $response = Controller::lessAction();
             return $response;
-        } elseif ('/form' === $uri) {
+        } elseif ('/post/form' === $uri) {
             $response = Controller::createPostAction();
             return $response;
-        } elseif ('/save-new-post' === $uri) {
+        } elseif ('/post/save-new-post' === $uri) {
             $response = Controller::saveNewPostAction();
             return $response;
-        } elseif ('/delete' === $uri) {
+        } elseif ('/post/delete' === $uri) {
             $response = Controller::deleteAction();
             return $response;
         }
-        elseif ('/edit' === $uri && $request->query->has('id')) {
+        elseif ('/post/edit' === $uri && $request->query->has('id')) {
             $response = Controller::editAction($request->query->get('id'));
             return $response;
         }
-        elseif ('/edited' === $uri ) {
+        elseif ('/post/edited' === $uri ) {
             $response = Controller::updatePostAction();
             return $response;
         }

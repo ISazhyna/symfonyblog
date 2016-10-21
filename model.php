@@ -5,7 +5,10 @@ class Model
 {
     public static function openDatabaseConnection()
     {
-        $link = new PDO("mysql:host=localhost;dbname=blog_db", 'root');
+        $config = simplexml_load_file('config.xml');
+        $link = new PDO("mysql:host=$config->Host; dbname=$config->DBname", "$config->UserName");
+        var_dump($config->Host);
+//        exit();
         return $link;
     }
 
@@ -45,8 +48,8 @@ class Model
     public static function addNewPost(array $postParams)
     {
         $link = self::openDatabaseConnection(); //create new PDO
-        $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('".$postParams['title']."', '".$postParams['body']."', '".date('Y-m-d H:m:s')."')");
-       self::closeDatabaseConnection($link);
+        $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('" . $postParams['title'] . "', '" . $postParams['body'] . "', '" . date('Y-m-d H:m:s') . "')");
+        self::closeDatabaseConnection($link);
         return $result;
     }
 
@@ -57,10 +60,11 @@ class Model
         self::closeDatabaseConnection($link);
         return $result;
     }
+
     public static function editOldPost(array $postParams)
     {
         $link = self::openDatabaseConnection(); //create new PDO
-        $result = $link->query("UPDATE Post SET Title='".$postParams['title']."', body='".$postParams['body']."' WHERE id=".$postParams['getparam']);
+        $result = $link->query("UPDATE Post SET Title='" . $postParams['title'] . "', body='" . $postParams['body'] . "' WHERE id=" . $postParams['getparam']);
         self::closeDatabaseConnection($link);
         return $result;
     }

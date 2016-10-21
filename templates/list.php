@@ -18,15 +18,15 @@
         <?php foreach ($posts as $post): ?>
             <tr>
                 <td>
-                    <a href="/show?id=<?= $post['id'] ?>">
+                    <a href="/post/show?id=<?= $post['id'] ?>">
                         <?= $post['title'] . ' ' . $post['body'] ?>
                     </a>
                 </td>
-                <td><a href="/delete?id=<?= $post['id'] ?>"><span class="glyphicon glyphicon-remove"
-                                                                  aria-hidden="true"></span></a>
+                <td><a href="/post/delete?id=<?= $post['id'] ?>"><span class="glyphicon glyphicon-remove"
+                                                                       aria-hidden="true"></span></a>
                 </td>
-                <td><a href="/edit?id=<?= $post['id'] ?>"><span class="glyphicon glyphicon-edit"
-                                                                aria-hidden="true"></span></a>
+                <td><a href="/post/edit?id=<?= $post['id'] ?>"><span class="glyphicon glyphicon-edit"
+                                                                     aria-hidden="true"></span></a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -34,14 +34,14 @@
     </table>
 
 </div>
-<div><a class="btn btn-primary" href="/more3" role="button">
+<div><a class="btn btn-primary" href="/post/more3" role="button">
         <p>More 3 </p>
     </a></div>
 
-<div><a class="btn btn-success" href="/less3" role="button">
+<div><a class="btn btn-success" href="/post/less3" role="button">
         <p>Less 3</p>
     </a></div>
-<div><a class="btn btn-info" href="/form" role="button">
+<div><a class="btn btn-info" href="/post/form" role="button">
         <p>Create new post</p>
     </a></div>
 <?php $content = ob_get_clean(); ?>

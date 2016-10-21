@@ -11,7 +11,7 @@ class Controller
     {
         $sql = '';
         $posts = Model::getAllPosts($sql);
-        $html = self::renderTemplate('templates/list.php', array('posts' => $posts, 'deleteMessage'=>$afterDelete));
+        $html = self::renderTemplate('templates/list.php', array('posts' => $posts, 'deleteMessage' => $afterDelete));
         return new Response($html);
     }
 
