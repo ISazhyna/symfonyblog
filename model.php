@@ -42,10 +42,10 @@ class Model
 
     }
 
-    public static function addNewPost()
+    public static function addNewPost(array $postParams)
     {
         $link = self::openDatabaseConnection(); //create new PDO
-        $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('".$_POST['title']."', '".$_POST['body']."', '".$_POST['created_at']."')");
+        $result = $link->query("INSERT INTO Post (Title, body, created_at) VALUES ('".$postParams['title']."', '".$postParams['body']."', '".date('Y-m-d H:m:s')."')");
        self::closeDatabaseConnection($link);
         return $result;
     }

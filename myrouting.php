@@ -30,7 +30,7 @@ class MyRouting
             $response = Controller::createPostAction();
             return $response;
         } elseif ('/save-new-post' === $uri) {
-            $response = Controller::savePostAction();
+            $response = Controller::saveNewPostAction();
             return $response;
         } elseif ('/delete' === $uri) {
             $response = Controller::deleteAction();

@@ -11,7 +11,7 @@ class Controller
     {
         $sql = '';
         $posts = Model::getAllPosts($sql);
-        $html = self::renderTemplate('templates/list.php', array('posts' => $posts, 'showDeleteMessage'=>$afterDelete));
+        $html = self::renderTemplate('templates/list.php', array('posts' => $posts, 'deleteMessage'=>$afterDelete));
         return new Response($html);
     }
 
@@ -20,10 +20,10 @@ class Controller
      * @param int $id
      * @return Response
      */
-    public static function showAction($id, $afterUpdate = false)
+    public static function showAction($id, $afterUpdate = 0)
     {
         $post = Model::getPostById($id);
-        $html = self::renderTemplate('templates/show.php', array('post' => $post, 'showUpdateMessage' => $afterUpdate));
+        $html = self::renderTemplate('templates/show.php', array('post' => $post, 'showMessage' => $afterUpdate));
         return new Response($html);
 
     }
@@ -58,10 +58,11 @@ class Controller
         return new Response($html);
     }
 
-    public static function savePostAction()
+    public static function saveNewPostAction($afterUpdate = 2)
     {
-        Model::addNewPost();
-        $html = self::renderTemplate('templates/action.php', array());
+        $postParams = $_POST;
+        Model::addNewPost($postParams);
+        $html = self::renderTemplate('templates/show.php', array('post' => $postParams, 'showMessage' => $afterUpdate));
         return new Response($html);
     }
 
@@ -86,7 +87,7 @@ class Controller
     {
         $postParams = $_POST;
         Model::editOldPost($postParams);
-        return self::showAction($postParams['getparam'], true);
+        return self::showAction($postParams['getparam'], 1);
     }
 
     public static function addSomeStringToTextAction()

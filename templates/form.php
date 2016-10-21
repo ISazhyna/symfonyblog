@@ -15,12 +15,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Created at:</label>
-                <div class="col-sm-10">
-                    <input type="time" class="form-control" name="created_at">
-                </div>
-            </div>
-            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Сохранить</button>
                 </div>

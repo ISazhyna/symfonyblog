@@ -1,6 +1,6 @@
 <?php $title = 'List of Posts'; ?>
 <?php ob_start(); ?>
-<?php if ($showDeleteMessage) : ?>
+<?php if ($deleteMessage) : ?>
     <div class=\"alert alert-success\">Post №<?= $_GET['id'] ?> was successfully deleted. </div><br>
 <?php endif; ?>
 
