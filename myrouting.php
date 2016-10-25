@@ -24,17 +24,26 @@ class MyRouting
     /**
      * @return bool
      */
-    public static function isLoggedIn() {
-        if (isset($_SESSION['login_user'])) {
+    public static function isNotLoggedIn() {
+        if (!isset($_SESSION['login_user'])) {
             return true;
         } else {
             return false;
         }
     }
+    public static function rememberMe() {
+        if (isset($_COOKIE['username'])) {
+            $_SESSION['login_user']=$_COOKIE['username'];
+        }
+    }
 
     public static function routing($uri, Request $request)
     {
-        if (!self::isLoggedIn()) {
+        if (self::rememberMe()) {
+            $uri = '/login-form';
+        }
+
+        if (self::isNotLoggedIn()) {
             $uri = '/login-form';
         }
 

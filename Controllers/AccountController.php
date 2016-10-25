@@ -18,6 +18,7 @@ class AccountController
                 // Define $username and $password
                 $username = $_POST['username'];
                 $password = $_POST['password'];
+                $rememberme = $_POST['checkbox'];  //checkbox
                 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
 //                $link = Account::openDatabaseConnection();
                 $username = stripslashes($username); // из формы
@@ -27,8 +28,12 @@ class AccountController
                 {
                     $passwordDB = $row['password'];
                     if (password_verify($password, $passwordDB)) {
+                         if($rememberme == 'Yes' && !isset($_COOKIE['username']) )
+                        {
+                            setcookie("username",$username,time()+60); //1min expiration time
+                         }
                         $_SESSION['login_user'] = $username; // Initializing Session
-                        header("Location: /");
+                        header("Location:  ".$_SERVER['HTTP_REFERER']."");   // redirect to the previous page
                         exit();
                     } else {
                         static::$error = "Username or Password not match";
@@ -48,6 +53,7 @@ class AccountController
     public static function logoutAction()
     {
         unset($_SESSION['login_user']);
+        $_COOKIE['username']=null;
         header("Location: /");
         exit();
     }

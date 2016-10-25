@@ -26,6 +26,7 @@
                     <button type="submit" name="submit" class="btn btn-default">Login</button>
                 </div>
             </div>
+            <input type="checkbox" name="checkbox" value="Yes"/>
         </form>
     </div>
 <?php $content = ob_get_clean() ?>

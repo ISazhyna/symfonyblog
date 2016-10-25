@@ -17,5 +17,8 @@
 <a href="/logout-action">Logout</a>
 <?php endif; ?>
 <?= $content?>
+<?php var_dump( $_COOKIE['username'])?>
+<?php var_dump( $_SESSION['login_user'])?>
+<?php var_dump($_SERVER['HTTP_REFERER'])?>
 </body>
 </html>
