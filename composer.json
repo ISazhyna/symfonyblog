@@ -3,7 +3,14 @@
     "symfony/symfony": "3.1.*",
     "twbs/bootstrap": "^3.3"
   },
+
+
+
   "autoload": {
-    "files": ["/models/post/model.php", "/controllers/post/controllers.php", "/models/user/model.php", "/controllers/user/controllers.php",  "myrouting.php"]
+    "files": ["myrouting.php"],
+    "psr-4": {
+      "Controllers\\": "controllers/",
+      "Models\\": "models/"
+    }
   }
 }

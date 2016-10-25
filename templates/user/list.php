@@ -9,7 +9,8 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Title</th>
+            <th>Name</th>
+            <th>Email</th>
             <th>Delete user</th>
             <th>Edit user</th>
         </tr>
@@ -19,7 +20,12 @@
             <tr>
                 <td>
                     <a href="/user/show?id=<?= $user['id'] ?>">
-                        <?= $user['title'] . ' ' . $user['email'] ?>
+                        <?= $user['username'] ?>
+                    </a>
+                </td>
+                <td>
+                    <a href="/user/show?id=<?= $user['id'] ?>">
+                        <?= $user['email'] ?>
                     </a>
                 </td>
                 <td><a href="/user/delete?id=<?= $user['id'] ?>"><span class="glyphicon glyphicon-remove"
@@ -39,4 +45,4 @@
         <p>Add new user</p>
     </a></div>
 <?php $content = ob_get_clean(); ?>
-<?php include 'layout.php'; ?>
+<?php include '/../layout.php'; ?>

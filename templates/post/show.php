@@ -20,7 +20,7 @@ endswitch;
 <div class="text-uppercase"><?= $post['created_at'] ?></div>
 <div class="text-uppercase"><?= $post['body'] ?></div>
 <?php $content = ob_get_clean() ?>
-<?php include 'layout.php'; ?>
+<?php include '/../layout.php'; ?>
 
 
 

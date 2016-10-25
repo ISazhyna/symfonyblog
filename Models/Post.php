@@ -1,13 +1,12 @@
 <?php
+namespace Models;
 
-class Model
+class Post
 {
     public static function openDatabaseConnection()
     {
         $config = simplexml_load_file('config.xml');
-        $link = new PDO("mysql:host=$config->Host; dbname=$config->DBname", "$config->UserName");
-        var_dump($link);
-//        exit();
+        $link = new \PDO("mysql:host=$config->Host; dbname=$config->DBname", "$config->UserName");
         return $link;
     }
 
@@ -23,7 +22,7 @@ class Model
         $result = $link->query('SELECT id, title FROM post' . $sql);
         $posts = array();
 
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $result->fetch(\PDO::FETCH_ASSOC)) {
             $posts[] = $row;
         }
         self::closeDatabaseConnection($link);
@@ -37,9 +36,9 @@ class Model
         $link = self::openDatabaseConnection();
         $query = 'SELECT created_at, title, body FROM post WHERE id=:id';
         $statement = $link->prepare($query);
-        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        $row = $statement->fetch(\PDO::FETCH_ASSOC);
         self::closeDatabaseConnection($link);
         return $row;
 
