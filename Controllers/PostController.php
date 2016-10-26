@@ -11,9 +11,22 @@ class PostController
      */
     public static function listAction($afterDelete = false)
     {
-        $sql = '';
-        $posts = Post::getAllPosts($sql);
-        $html = self::renderTemplate('templates/post/list.php', array('posts' => $posts, 'deleteMessage' => $afterDelete));
+        $start=0;
+        $count=Post::pagination();
+        if (isset($_GET['qnt'])) {   // check if quantity of rows(posts) on page has been choosen
+            $limit = $_GET['qnt'];
+        } else {
+            $limit = $count;   // if not choosen
+        }
+        $total=ceil($count/$limit); // quantity of pages
+
+        if(isset($_GET['page']))
+        {
+            $page=$_GET['page'];
+            $start=($page-1)*$limit;
+        }
+        $posts = Post::getAllPosts($start,$limit);
+        $html = self::renderTemplate('templates/post/list.php', array('posts' => $posts, 'count'=>$count,  'total' => $total,'deleteMessage' => $afterDelete));
         return new Response($html);
     }
 
@@ -28,30 +41,6 @@ class PostController
         $html = self::renderTemplate('templates/post/show.php', array('post' => $post, 'showMessage' => $afterUpdate));
         return new Response($html);
 
-    }
-
-    /**
-     * @return Response
-     */
-    public static function more3Action()
-    {
-        $sql = ' Where id>3';
-        $posts = Post::getAllPosts($sql);
-        $html = self::renderTemplate('templates/post/list.php', array('posts' => $posts));
-        return new Response($html);
-    }
-
-    /**
-     * Method description
-     *
-     * @return Response
-     */
-    public static function less3Action()
-    {
-        $sql = ' Where id<=3';
-        $posts = Post::getAllPosts($sql);
-        $html = self::renderTemplate('templates/post/list.php', array('posts' => $posts));
-        return new Response($html);
     }
 
     public static function createPostAction()
@@ -92,14 +81,6 @@ class PostController
         return self::showAction($postParams['getparam'], 1);
     }
 
-    public static function addSomeStringToTextAction()
-    {
-        $postParams = Request;
-        $postParams['body'] = 'Constant string';
-        Post::editOldPost($postParams);
-        $html = self::renderTemplate('templates/post/edited.php', array());
-        return new Response($html);
-    }
 
 // helper function to render templates
     public static function renderTemplate($path, array $args)

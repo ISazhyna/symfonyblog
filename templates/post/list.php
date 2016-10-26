@@ -22,7 +22,7 @@ echo "<p>Вы посещали эту страницу <b>".$_COOKIE['test']."</
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($posts as $post): ?>
+        <?php foreach ($posts as $post):  ?>
             <tr>
                 <td>
                     <a href="/post/show?id=<?= $post['id'] ?>">
@@ -41,13 +41,26 @@ echo "<p>Вы посещали эту страницу <b>".$_COOKIE['test']."</
     </table>
 
 </div>
-<div><a class="btn btn-primary" href="/post/more3" role="button">
-        <p>More 3 </p>
-    </a></div>
 
-<div><a class="btn btn-success" href="/post/less3" role="button">
-        <p>Less 3</p>
-    </a></div>
+<?php  //http://stackoverflow.com/questions/5128292/using-a-html-select-element-to-add-get-parameters-to-url ?>
+<form method="get">
+    <p><select size="1" name="qnt">
+            <?php  for($p=1;$p<=$count;$p++):?>
+                <option value=<?= $p ?>> <?= $p ?></option>
+            <?php endfor; ?>
+        </select></p>
+    <p><input type="submit" value="Choose quantity of posts displayed"></p>
+</form>
+
+<ul class="pagination">
+    <?php
+    for($i=1;$i<=$total;$i++): //get parameter $total from PostController listAction()
+        ?>
+    <li> <a href="?qnt=<?= $_GET['qnt']?>&page=<?= $i ?>"> <?= $i ?> </a></li>
+    <?php endfor; ?>
+</ul>
+
+
 <div><a class="btn btn-info" href="/post/form" role="button">
         <p>Create new post</p>
     </a></div>
