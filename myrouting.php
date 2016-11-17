@@ -1,49 +1,119 @@
 <?php
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Controllers\PostController;
+use Controllers\UserController;
+use Controllers\AccountController;
 
 class MyRouting
 {
+//    /**
+//     * @param $uri
+//     * @param Request $request
+//     * @return string
+//     */
+//    public static function session()
+//    {
+//        $request = Request::createFromGlobals();
+//        if (!isset($_SESSION['login_user'])) {
+//            $uri = '/login-form';
+//        }
+//        else {$uri = $request->getPathInfo();}
+//        return $uri;
+//    }
     /**
-     * @param $uri
-     * @param Request $request
-     * @return Response
+     * @return bool
      */
+    public static function isNotLoggedIn() {
+        if (!isset($_SESSION['login_user'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public static function rememberMe() {
+        if (isset($_COOKIE['username'])) {
+            $_SESSION['login_user']=$_COOKIE['username'];
+        }
+    }
+
     public static function routing($uri, Request $request)
     {
-        if ('/' === $uri) {
-            $response = Controller::listAction();
+        if (self::rememberMe()) {
+            $uri = '/login-form';
+        }
+
+        if (self::isNotLoggedIn()) {
+            $uri = '/login-form';
+        }
+
+        if ('/post/' === $uri or '/' === $uri) {
+            $response = PostController::listAction();
             return $response;
-            var_dump($uri);
-        } elseif ('/show' === $uri && $request->query->has('id')) {
-            $response = Controller::showAction($request->query->get('id'));
+        } elseif ('/post/show' === $uri && $request->query->has('id')) {
+            $response = PostController::showAction($request->query->get('id'));
             return $response;
-            var_dump($uri);
         } //new more and less
-        elseif ('/more3' === $uri) {
-            $response = Controller::moreAction();
+        elseif ('/post/more3' === $uri) {
+            $response = PostController::more3Action();
             return $response;
-        } elseif ('/less3' === $uri) {
-            $response = Controller::lessAction();
+        } elseif ('/post/less3' === $uri) {
+            $response = PostController::less3Action();
             return $response;
-        } elseif ('/form' === $uri) {
-            $response = Controller::createPostAction();
+        } elseif ('/post/form' === $uri) {
+            $response = PostController::createPostAction();
             return $response;
-        } elseif ('/save-new-post' === $uri) {
-            $response = Controller::saveNewPostAction();
+        } elseif ('/post/save-new-post' === $uri) {
+            $response = PostController::saveNewPostAction();
             return $response;
-        } elseif ('/delete' === $uri) {
-            $response = Controller::deleteAction();
+        } elseif ('/post/delete' === $uri) {
+            $response = PostController::deleteAction();
             return $response;
-        }
-        elseif ('/edit' === $uri && $request->query->has('id')) {
-            $response = Controller::editAction($request->query->get('id'));
+        } elseif ('/post/edit' === $uri && $request->query->has('id')) {
+            $response = PostController::editAction($request->query->get('id'));
             return $response;
-        }
-        elseif ('/edited' === $uri ) {
-            $response = Controller::updatePostAction();
+        } elseif ('/post/edited' === $uri) {
+            $response = PostController::updatePostAction();
             return $response;
         }
+        /**
+         * User section
+         */
+        elseif ('/user/' === $uri) {
+            $response = UserController::listUserAction();
+            return $response;
+        }
+        elseif ('/user/show' === $uri && $request->query->has('id')) {
+            $response = UserController::showUserAction($request->query->get('id'));
+            return $response;
+        }
+        elseif ('/user/add-new-user' === $uri) {
+            $response = UserController::addNewUserAction();
+            return $response;
+        }elseif ('/user/save-new-user' === $uri) {
+            $response = UserController::saveNewUserAction();
+            return $response;
+        }
+        elseif ('/user/delete' === $uri && $request->query->has('id')) {  //not obligatory check && $request->query->has('id')
+            $response = UserController::deleteUserAction($request->query->get('id'));
+            return $response;
+        }
+        elseif ('/user/edit-user' === $uri ) {
+            $response = UserController::editUserAction($request->query->get('id'));
+            return $response;
+        }
+        /**
+         * login page
+         */
+        elseif ('/login-form' === $uri ) {
+            $response = AccountController::loginAction();
+            return $response;
+        }
+        elseif ('/logout-action' === $uri ) {
+            $response = AccountController::logoutAction();
+            return $response;
+        }
+
         else {
             $html = '<html><body><h1>Page Not Found</h1></body></html>';
             $response = new Response($html, Response::HTTP_NOT_FOUND);

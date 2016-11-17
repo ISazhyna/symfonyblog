@@ -9,6 +9,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<?php if (isset($_SESSION['login_user'])) : ?>
+<div class="alert alert-success">
+    <p>You logged in as <?php echo $_SESSION['login_user'] ?></p>
+</div>
+<a href="/logout-action">Logout</a>
+<?php endif; ?>
 <?= $content?>
+<?php var_dump( $_COOKIE['username'])?>
+<?php var_dump( $_SESSION['login_user'])?>
+<?php var_dump($_SERVER['HTTP_REFERER'])?>
 </body>
 </html>

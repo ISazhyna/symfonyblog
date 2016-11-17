@@ -5,7 +5,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="email">Title:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control"  name="title" placeholder="write title here">
+                    <input type="text" class="form-control" name="title" placeholder="write title here">
                 </div>
             </div>
             <div class="form-group">
@@ -22,4 +22,4 @@
         </form>
     </div>
 <?php $content = ob_get_clean() ?>
-<?php include 'layout.php' ?>
+<?php include '/../layout.php' ?>

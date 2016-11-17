@@ -1,8 +1,7 @@
 <?php $title = 'Edit post'; ?>
 <?php ob_start() ?>
-<?php //var_dump($_GET["id"]); ?>
 <div class="container">
-    <form class="form-horizontal" action="edited" method="post">
+    <form class="form-horizontal" action="../../index.php" method="post">
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Title:</label>
             <div class="col-sm-10">
@@ -24,4 +23,4 @@
     </form>
 </div>
 <?php $content = ob_get_clean() ?>
-<?php include 'layout.php' ?>
+<?php include '/../layout.php' ?>

@@ -1,8 +1,10 @@
 <?php
+namespace Controllers;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Models\Post;
 
-class Controller
+class PostController
 {
     /**
      * @return Response
@@ -10,8 +12,8 @@ class Controller
     public static function listAction($afterDelete = false)
     {
         $sql = '';
-        $posts = Model::getAllPosts($sql);
-        $html = self::renderTemplate('templates/list.php', array('posts' => $posts, 'deleteMessage'=>$afterDelete));
+        $posts = Post::getAllPosts($sql);
+        $html = self::renderTemplate('templates/post/list.php', array('posts' => $posts, 'deleteMessage' => $afterDelete));
         return new Response($html);
     }
 
@@ -22,8 +24,8 @@ class Controller
      */
     public static function showAction($id, $afterUpdate = 0)
     {
-        $post = Model::getPostById($id);
-        $html = self::renderTemplate('templates/show.php', array('post' => $post, 'showMessage' => $afterUpdate));
+        $post = Post::getPostById($id);
+        $html = self::renderTemplate('templates/post/show.php', array('post' => $post, 'showMessage' => $afterUpdate));
         return new Response($html);
 
     }
@@ -31,11 +33,11 @@ class Controller
     /**
      * @return Response
      */
-    public static function moreAction()
+    public static function more3Action()
     {
         $sql = ' Where id>3';
-        $posts = Model::getAllPosts($sql);
-        $html = self::renderTemplate('templates/list.php', array('posts' => $posts));
+        $posts = Post::getAllPosts($sql);
+        $html = self::renderTemplate('templates/post/list.php', array('posts' => $posts));
         return new Response($html);
     }
 
@@ -44,31 +46,31 @@ class Controller
      *
      * @return Response
      */
-    public static function lessAction()
+    public static function less3Action()
     {
         $sql = ' Where id<=3';
-        $posts = Model::getAllPosts($sql);
-        $html = self::renderTemplate('templates/list.php', array('posts' => $posts));
+        $posts = Post::getAllPosts($sql);
+        $html = self::renderTemplate('templates/post/list.php', array('posts' => $posts));
         return new Response($html);
     }
 
     public static function createPostAction()
     {
-        $html = self::renderTemplate('templates/form.php', array());
+        $html = self::renderTemplate('templates/post/form.php', array());
         return new Response($html);
     }
 
     public static function saveNewPostAction($afterUpdate = 2)
     {
         $postParams = $_POST;
-        Model::addNewPost($postParams);
-        $html = self::renderTemplate('templates/show.php', array('post' => $postParams, 'showMessage' => $afterUpdate));
+        Post::addNewPost($postParams);
+        $html = self::renderTemplate('templates/post/show.php', array('post' => $postParams, 'showMessage' => $afterUpdate));
         return new Response($html);
     }
 
     public static function deleteAction()
     {
-        Model::deletePost();
+        Post::deletePost();
         return self::listAction(true);
     }
 
@@ -78,15 +80,15 @@ class Controller
      */
     public static function editAction($id)
     {
-        $post = Model::getPostById($id);
-        $html = self::renderTemplate('templates/edit.php', array('post' => $post));
+        $post = Post::getPostById($id);
+        $html = self::renderTemplate('templates/post/edit.php', array('post' => $post));
         return new Response($html);
     }
 
     public static function updatePostAction()
     {
         $postParams = $_POST;
-        Model::editOldPost($postParams);
+        Post::editOldPost($postParams);
         return self::showAction($postParams['getparam'], 1);
     }
 
@@ -94,8 +96,8 @@ class Controller
     {
         $postParams = Request;
         $postParams['body'] = 'Constant string';
-        Model::editOldPost($postParams);
-        $html = self::renderTemplate('templates/edited.php', array());
+        Post::editOldPost($postParams);
+        $html = self::renderTemplate('templates/post/edited.php', array());
         return new Response($html);
     }
 
@@ -104,7 +106,7 @@ class Controller
     {
         extract($args); //возвращает массив $posts или $post в зависимости от экшна
         ob_start();
-        require $path;  // подтягивает templates/list.php
+        require $path;
         $html = ob_get_clean();
         return $html;
 
