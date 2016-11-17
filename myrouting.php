@@ -47,7 +47,7 @@ class MyRouting
             $uri = '/login-form';
         }
 
-        if ('/post/' === $uri or '/' === $uri) {
+        if ('/post' === $uri || '/' === $uri) {
             $response = PostController::listAction();
             return $response;
         } elseif ('/post/show' === $uri && $request->query->has('id')) {

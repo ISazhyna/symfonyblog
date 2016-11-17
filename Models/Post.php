@@ -16,17 +16,25 @@ class Post
     }
 
 
-    public static function getAllPosts($sql)
+    public static function getAllPosts($start,$limit)
     {
-        $link = self::openDatabaseConnection(); //create new PDO
-        $result = $link->query('SELECT id, title FROM post' . $sql);
-        $posts = array();
 
+        $link = self::openDatabaseConnection(); //create new PDO
+        $result = $link->query("SELECT id, title FROM post LIMIT "."$start, $limit");
+        $posts = array();
         while ($row = $result->fetch(\PDO::FETCH_ASSOC)) {
             $posts[] = $row;
         }
         self::closeDatabaseConnection($link);
         return $posts;
+    }
+
+    public static function pagination ()
+    {
+        $link = self::openDatabaseConnection(); //create new PDO
+        $countr = $link->query("SELECT id, title FROM post");
+        $count = $countr->rowCount();
+        return $count;
     }
 
 
