@@ -19,6 +19,7 @@ echo "<p>Вы посещали эту страницу <b>".$_COOKIE['test']."</
             <th>Title</th>
             <th>Delete post</th>
             <th>Edit post</th>
+            <th>Show post(ajax)</th>
         </tr>
         </thead>
         <tbody>
@@ -35,10 +36,19 @@ echo "<p>Вы посещали эту страницу <b>".$_COOKIE['test']."</
                 <td><a href="/post/edit?id=<?= $post['id'] ?>"><span class="glyphicon glyphicon-edit"
                                                                      aria-hidden="true"></span></a>
                 </td>
+                <td>
+                    <a class="ajax_post" data="<?= $post['id']?>"><span class="glyphicon glyphicon-folder-open"
+                                                                     aria-hidden="true"></span></a>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
+    <div id="loader" style="display: none">
+        <p>....LOADING....</p>
+    </div>
+    <div id="post_content">
+    </div>
 
 </div>
 

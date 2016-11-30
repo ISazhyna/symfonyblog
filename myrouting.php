@@ -76,6 +76,22 @@ class MyRouting
             $response = PostController::updatePostAction();
             return $response;
         }
+
+        elseif ('/post/ajax' === $uri) {
+            $response = PostController::ajaxAction();
+            return $response;
+        }
+
+         elseif ('/post/get_ajax_post_content' === $uri && $request->query->has('post_id')) {
+            $response = PostController::getAjaxPostContentAction($request->query->get('post_id'));
+            return $response;
+        }
+
+        elseif ('/post/add_new_post_ajax' === $uri) {
+            $response = PostController::addNewPostAjax();
+            return $response;
+        }
+
         /**
          * User section
          */

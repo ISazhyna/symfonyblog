@@ -18,7 +18,9 @@ endswitch;
 
 <h1 class="text-center"><?= $post['title'] ?></h1>
 <div class="text-uppercase"><?= $post['created_at'] ?></div>
-<div class="text-uppercase"><?= $post['body'] ?></div>
+<div id="post" class="text-uppercase"><?= $post['body'] ?></div>
+<button type="button" id="bajax">Ajax</button>
+<div><a href="/">List of posts</div>
 <?php $content = ob_get_clean() ?>
 <?php include '/../layout.php'; ?>
 
