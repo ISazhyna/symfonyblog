@@ -8,12 +8,13 @@ echo "<p>Вы посещали эту страницу <b>".$_COOKIE['test']."</
 ?>
 <?php ob_start(); ?>
 <?php if ($deleteMessage) : ?>
-    <div class=\"alert alert-success\">Post №<?= $_GET['id'] ?> was successfully deleted. </div><br>
+<!--    <div class=\"alert alert-success\">Post №--><?//= $_GET['id'] ?><!-- was successfully deleted. </div><br>-->
 <?php endif; ?>
+<div id="dlt_msg" class=\"alert alert-success\"></div><br>
 
 <h1>List of Posts</h1>
 <div class="container">
-    <table class="table table-bordered">
+    <table id="lst_tbl" class="table table-bordered">
         <thead>
         <tr>
             <th>Title</th>
@@ -30,8 +31,8 @@ echo "<p>Вы посещали эту страницу <b>".$_COOKIE['test']."</
                         <?= $post['title'] ?>
                     </a>
                 </td>
-                <td><a href="/post/delete?id=<?= $post['id'] ?>"><span class="glyphicon glyphicon-remove"
-                                                                       aria-hidden="true"></span></a>
+                <td><p class="p_id" post_id="<?= $post['id'] ?>"><span class="glyphicon glyphicon-remove"
+                                                                       aria-hidden="true"></span></p>
                 </td>
                 <td><a href="/post/edit?id=<?= $post['id'] ?>"><span class="glyphicon glyphicon-edit"
                                                                      aria-hidden="true"></span></a>
@@ -49,7 +50,6 @@ echo "<p>Вы посещали эту страницу <b>".$_COOKIE['test']."</
     </div>
     <div id="post_content">
     </div>
-
 </div>
 
 <?php  //http://stackoverflow.com/questions/5128292/using-a-html-select-element-to-add-get-parameters-to-url ?>

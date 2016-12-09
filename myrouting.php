@@ -4,6 +4,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Controllers\PostController;
 use Controllers\UserController;
 use Controllers\AccountController;
+use Controllers\AjaxController;
 
 class MyRouting
 {
@@ -66,10 +67,9 @@ class MyRouting
         } elseif ('/post/save-new-post' === $uri) {
             $response = PostController::saveNewPostAction();
             return $response;
-        } elseif ('/post/delete' === $uri) {
-            $response = PostController::deleteAction();
-            return $response;
-        } elseif ('/post/edit' === $uri && $request->query->has('id')) {
+        }
+
+        elseif ('/post/edit' === $uri && $request->query->has('id')) {
             $response = PostController::editAction($request->query->get('id'));
             return $response;
         } elseif ('/post/edited' === $uri) {
@@ -77,18 +77,29 @@ class MyRouting
             return $response;
         }
 
-        elseif ('/post/ajax' === $uri) {
-            $response = PostController::ajaxAction();
-            return $response;
-        }
 
          elseif ('/post/get_ajax_post_content' === $uri && $request->query->has('post_id')) {
-            $response = PostController::getAjaxPostContentAction($request->query->get('post_id'));
+            $response = AjaxController::getAjaxPostContentAction($request->query->get('post_id'));
             return $response;
         }
 
         elseif ('/post/add_new_post_ajax' === $uri) {
-            $response = PostController::addNewPostAjax();
+            $response = AjaxController::addNewPostAjax();
+            return $response;
+        }
+
+        elseif ('/post/add_new_post_ajax_validation' === $uri) {
+            $response = AjaxController::validationNewPostAjax();
+            return $response;
+        }
+
+        elseif ('/post/form_validation' === $uri) {
+            $response = PostController::createPostValidAction();
+            return $response;
+        }
+
+        elseif ('/post/delete' === $uri && $request->query->has('post_id')) {
+            $response = AjaxController::deleteActionAjax($request->query->get('post_id'));
             return $response;
         }
 
@@ -129,7 +140,10 @@ class MyRouting
             $response = AccountController::logoutAction();
             return $response;
         }
-
+        elseif ('/user/save-new-user-ajax' === $uri) {
+            $response = AjaxController::addNewUserAjax();
+            return $response;
+        }
         else {
             $html = '<html><body><h1>Page Not Found</h1></body></html>';
             $response = new Response($html, Response::HTTP_NOT_FOUND);

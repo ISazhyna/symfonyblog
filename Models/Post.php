@@ -63,7 +63,7 @@ class Post
     public static function deletePost()
     {
         $link = self::openDatabaseConnection(); //create new PDO
-        $result = $link->query("DELETE FROM post WHERE id=" . $_GET['id']);
+        $result = $link->query("DELETE FROM post WHERE id=" . $_GET['post_id']);
         self::closeDatabaseConnection($link);
         return $result;
     }
