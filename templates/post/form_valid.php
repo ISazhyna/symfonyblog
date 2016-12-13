@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="pwd">Text, не более 100 символов:</label>
                 <div class="col-sm-10">
-                    <textarea type="text" class="form-control" name="body" placeholder="write content here"></textarea><span class="error body">* <?php echo $textErr;?></span>
+                    <textarea type="text" class="form-control" name="body" placeholder="write content here"></textarea><span class="error body">* </span>
                 </div>
             </div>
                       <div class="form-group">

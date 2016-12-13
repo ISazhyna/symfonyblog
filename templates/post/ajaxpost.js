@@ -28,28 +28,45 @@ $(document).ready(function(){
                 $.ajax({
                     type: 'post',
                     url: form.attr('action'),
-                    data: form.serialize(),
-                }).success(function(result) {
-                    console.log(result);
-                    var ajaxResult = $.parseJSON(result);
-                    var status  = ajaxResult.status;
-                    var message  = ajaxResult.message;
-                    var error = ajaxResult.error;
-                    var prefix = ajaxResult.prefix;
-                    $('#save_post').html("<h1>"+status+" "+message+"</h1>");
-                    $('.error'+prefix).html("<p>"+error+"</p>");
+                    data: {"title":$("input[name='title']").val(), "body":$("textarea[name='body']").val()}
+            // data: form.serialize(),
+        }).success(function(result) {
+                        console.log(result);
 
-                    console.log($('form'));
-                    console.log($('form')[0]);
-
-
-                    if (status== "success") {
-                        $('form')[0].reset();
+                    if (result.status =="success")
+                    {
+                    $('#save_post').html("<h2>"+result.message+"</h2>");
+                            $('form')[0].reset();
                     }
+                    else {
+                        // var ajaxResult = $.parseJSON(result);  //don't parse result because we have already had Object because of using JSonREsponse
+                        var errors = result.errors;
+                        if (typeof errors.title != "undefined") {
+                            $("input").siblings("span.title").html("* " + errors.title);
+                        }
+                        if (typeof errors.body != "undefined") {
+                            $("textarea").siblings("span.body").html("* " + errors.body);
+                        }
+                        // var status  = ajaxResult.status;
+                        // var message  = ajaxResult.message;
+                        // var prefix = ajaxResult.prefix;
+                        // $('.error'+prefix).html("<p>"+error+"</p>");
+                        // console.log($('form'));
+                        // console.log($('form')[0]);
+                        //
+                        //
 
+
+                        $('#save_post').html("<h2>"+result.message+"</h2>");
+                    }
 
                 });
         });
+
+    $("input,textarea").on('change', function(){
+        $(this).siblings("span.error").html("*");
+    });
+
 
     $(".p_id").on('click',
         function() {
@@ -164,32 +181,33 @@ $(document).ready(function(){
 
             });
         });
+    
+   /*
+   change currencies
+     */
 
-
-    // $("form").on('submit',
-    //     function(t) {
-    //             t.preventDefault();
-    //             var form = $(this);
-    //             $.ajax({
-    //                 type: $orm.attr('method'),
-    //                 url: form.attr('action'),
-    //                 data: form.serialize(),
-    //             }).success(function(result) {
-    //                 var ajaxResult = $.parseJSON(result);
-    //                 var status  = ajaxResult.status;
-    //                 var message  = ajaxResult.message;
-    //                 $('#save_post').html("<h1>"+status+" "+message+"</h1>");
-    //                 console.log($('form'));
-    //                 console.log($('form')[0]);
-    //                 $('form')[0].reset();
-    //
-    //                 // console.log('success');
-    //             });
-    //             //отмена действия по умолчанию для кнопки submit
-    //     });
-
+    $(".currency").on('click',function(){
+        // var curr = '<?php echo(15-1) ?>';
+        // var x = <?php echo $result ;?>;
+        console.log(x);
+        $.ajax(
+            {
+                // url: "/curl",
+                // method: "GET",
+                // data: {'post_id': postId},
+                // success: function(result){
+                //     var ajaxResult = $.parseJSON(result);
+                //     var content  = ajaxResult.content;
+                //     $('#post_content').html("<h1>"+content+"</h1>");
+                // },
+                // beforeSend: function() {
+                //     $('#loader').show();
+                // },
+                // complete: function(){
+                //     $('#loader').hide();
+                // },
+            }
+        );
+    });
 
 });
-
-
-
