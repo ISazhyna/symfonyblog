@@ -11,8 +11,9 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">E-mail:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control rfield" id="eml" name="email" placeholder="write e-mail here">
-                </div>
+                    <input type="text" class="form-control rfieldE" id="eml" name="email" placeholder="write e-mail here">
+                    <span id="email_verif" display></span> </div>
+
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Password:</label>
@@ -33,5 +34,3 @@
 <?php $content = ob_get_clean() ?>
 <?php include '/../layout.php' ?>
 
-
-<!--disabled="disabled"-->

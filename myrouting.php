@@ -5,6 +5,7 @@ use Controllers\PostController;
 use Controllers\UserController;
 use Controllers\AccountController;
 use Controllers\AjaxController;
+use Controllers\CurlController;
 
 class MyRouting
 {
@@ -144,6 +145,16 @@ class MyRouting
             $response = AjaxController::addNewUserAjax();
             return $response;
         }
+        elseif ('/curl' === $uri) {
+            $response = CurlController::curlController();
+            return $response;
+        }
+
+        elseif ('/test' === $uri) {
+            $response = CurlController::test();
+            return $response;
+        }
+
         else {
             $html = '<html><body><h1>Page Not Found</h1></body></html>';
             $response = new Response($html, Response::HTTP_NOT_FOUND);

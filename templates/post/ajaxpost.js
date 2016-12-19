@@ -26,30 +26,38 @@ $(document).ready(function(){
         function() {
                 var form = $('form');
                 $.ajax({
-                    type: 'post',
-                    url: form.attr('action'),
-                    data: form.serialize(),
-                }).success(function(result) {
-                    console.log(result);
-                    var ajaxResult = $.parseJSON(result);
-                    var status  = ajaxResult.status;
-                    var message  = ajaxResult.message;
-                    var error = ajaxResult.error;
-                    var prefix = ajaxResult.prefix;
-                    $('#save_post').html("<h1>"+status+" "+message+"</h1>");
-                    $('.error'+prefix).html("<p>"+error+"</p>");
+                    method: 'post',
+                    // url: form.attr('action'),
+                    url: 'add_new_post_ajax_validation',
+                    data: {"title":$("input[name='title']").val(), "body":$("textarea[name='body']").val()}
+            // data: form.serialize(),
+        }).success(function(result) {
+                        console.log(result);
 
-                    console.log($('form'));
-                    console.log($('form')[0]);
-
-
-                    if (status== "success") {
-                        $('form')[0].reset();
+                    if (result.status =="success")
+                    {
+                    $('#save_post').html("<h2>"+result.message+"</h2>");
+                            $('form')[0].reset();
                     }
+                    else {
+                        var errors = result.errors;
+                        if (typeof errors.title != "undefined") {
+                            $("input").siblings("span.title").html("* " + errors.title);
+                        }
+                        if (typeof errors.body != "undefined") {
+                            $("textarea").siblings("span.body").html("* " + errors.body);
+                        }
+                        $('#save_post').html("<h2>"+result.message+"</h2>");
 
+                    }
 
                 });
         });
+
+    $("input,textarea").on('change', function(){
+        $(this).siblings("span.error").html("*");
+    });
+
 
     $(".p_id").on('click',
         function() {
@@ -74,7 +82,7 @@ $(document).ready(function(){
 
 
     /*
-     form validation
+   add new user form validation
      */
 
     $(function() {
@@ -86,6 +94,25 @@ $(document).ready(function(){
 
             // Добавляем каждому проверяемому полю, указание что поле пустое
             form.find('.rfield').addClass('empty_field');
+
+            // Проверка email регулярным выражением
+            // var pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.[a-z]{2,6}$/i;
+            var pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i;
+            var mail = $('input[name="email"]');
+            mail.blur(function() {
+                if (mail.val() != '') {
+                    if (mail.val().search(pattern) == 0) {
+                        $('#email_verif').text('Подходит');
+                        mail.removeClass('empty_field');
+                    } else {
+                        $('#email_verif').text('Не подходит');
+                        mail.addClass('empty_field');
+                    }
+                } else {
+                $('#email_verif').text('Поле e-mail не должно быть пустым!');
+                mail.addClass('empty_field');
+                }
+            });
 
             // Функция проверки полей формы
             function checkInput(){
@@ -99,6 +126,8 @@ $(document).ready(function(){
                     }
                 });
             }
+
+
 
             // Функция подсветки незаполненных полей
             function lightEmpty(){
@@ -165,31 +194,82 @@ $(document).ready(function(){
             });
         });
 
+   /*
+   change currencies
+     */
 
-    // $("form").on('submit',
-    //     function(t) {
-    //             t.preventDefault();
-    //             var form = $(this);
-    //             $.ajax({
-    //                 type: $orm.attr('method'),
-    //                 url: form.attr('action'),
-    //                 data: form.serialize(),
-    //             }).success(function(result) {
-    //                 var ajaxResult = $.parseJSON(result);
-    //                 var status  = ajaxResult.status;
-    //                 var message  = ajaxResult.message;
-    //                 $('#save_post').html("<h1>"+status+" "+message+"</h1>");
-    //                 console.log($('form'));
-    //                 console.log($('form')[0]);
-    //                 $('form')[0].reset();
-    //
-    //                 // console.log('success');
-    //             });
-    //             //отмена действия по умолчанию для кнопки submit
-    //     });
+    $("tr").on('click',function(){
+        var id= $(this).attr('id');
+        // var curr = '<?php echo(15-1) ?>';
+        // var x = <?php echo $result ;?>;
+        console.log(x.organizations[0].currencies.EUR.bid);
+        console.log(id);
+        // $(this).children("td.bid").css({"color":"red"}).html(x.organizations[0].currencies.EUR.bid);
+        $(this).children("td.bid").css({"color":"red"}).html(x.organizations[id].currencies.EUR.bid);
+    });
 
 
+    $(".currency").on('click',function() {
+        var curr= $(this).attr('id').toUpperCase();
+        console.log(curr);
+        // console.log(x.organizations[0].currencies.EUR.bid);
+        // $(this).children("td.bid").css({"color":"red"}).html(x.organizations[0].currencies.EUR.bid);
+        var org=x.organizations;
+        org.forEach (function(item, index) {
+            // console.log(item.currencies[curr]);
+            console.log(item.currencies.RUB);
+            // $("#"+index).css({"color":"green"}).html( '<td class="bank">'+item.title+'</td><td class="city"></td><td class="ask">'+item.currencies.EUR.ask+'</td><td class="bid">'+item.currencies.EUR.bid+'</td>');
+            if (typeof item.currencies[curr] == "undefined"){
+                item.currencies[curr]={"ask":"empty", "bid":"empty"};
+            }
+
+            $("#"+index).children("td.ask").css({"color":"red"}).html( '<td class="ask">'+item.currencies[curr].ask+'</td>');
+            $("#"+index).children("td.bid").css({"color":"orange"}).html( '<td class="bid">'+item.currencies[curr].bid+'</td>');
+
+            // document.getElementById("empty_tbody").innerHTML='<tr class="tr_empty"><td class="bank">'+item.title+'</td><td class="city"></td><td class="ask"></td><td class="bid"></td></tr>';
+        });
+
+       });
+
+
+
+    $("#test").on('click',
+        function(e) {
+            e.preventDefault();
+            console.log("jquery");
+            // $.ajax({
+            //
+            //     // url: "/post/show",
+            //     // method: "GET",
+            //     // data: {'id': '305'},  //GET data to server
+            //     // dataType: "html"
+            //
+            //     url: "/test",
+            //     method: "POST",
+            //     data: {"txt1":$("input[name='txt1']").val(), "txt2":$("input[name='txt2']").val()},  //GET data to server
+            //     // dataType: "html"
+            // }).success(function(result) {
+            //     // console.log(result.txt1);
+            //     console.log(result);
+            //     $("#container").html('<h1>'+$("input[name='txt1']").val()+'</h1>');
+            // });
+
+            $.ajax({
+
+                // url: "/post/show",
+                // method: "GET",
+                // data: {'id': '305'},  //GET data to server
+                // dataType: "html"
+
+                url: "/test",
+                method: "POST",
+                data: {"txt1":$("input[name='txt1']").val(), "txt2":$("input[name='txt2']").val()},  //GET data to server
+                // dataType: "html"
+            success: function(result) {
+                // console.log(result.txt1);
+                console.log(result);
+                $("#container").html('<h1>'+$("input[name='txt1']").val()+' '+$("input[name='txt2']").val()+'</h1>');
+            }
+        });
+        });
 });
-
-
-
